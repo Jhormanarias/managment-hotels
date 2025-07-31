@@ -67,24 +67,6 @@ cp gui/.env.example gui/.env # el del frontend
 cp .env.example .env  # El de la bd
 ```
 
-Luego, cuando arranque Laravel por primera vez, deberás generar la clave secreta (lo explicamos más abajo 👇).
-
----
-
-### 🛠️ 2.2 (Solo para Laravel) Generar la clave de la aplicación
-
-Una vez montado el contenedor de Laravel por primera vez, entra a él:
-
-```bash
-docker exec -it backend-app bash
-```
-
-Y dentro del contenedor ejecuta:
-
-```bash
-php artisan key:generate
-```
-
 ---
 
 ### 🛠️ 3. Levantar todo con Docker
@@ -98,6 +80,31 @@ docker-compose up --build
 🔁 Esto puede tardar unos minutos la primera vez. No te asustes si ves muchas letras y barras de progreso.
 
 ---
+
+Luego, cuando arranque Laravel por primera vez, deberás generar la clave secreta 👇.
+En este punto si llegase el caso de que ingresaste a localhost:8000 y no ves la pantalla de laravel,
+puede que haya ocurrido un error instalando las dependencias, pero ya los solucionamos
+(Muy importante ejecutar las migraciones de la BD)
+
+---
+
+### 🛠️ 2.2 (Solo para Laravel) Generar la clave de la aplicación
+
+Una vez montado el contenedor de Laravel por primera vez, entra a él:
+
+```bash
+docker exec -it managment-hotels-api-1 bash
+```
+
+Y dentro del contenedor ejecuta:
+
+```bash
+composer install
+php artisan key:generate
+# Ejecutar migraciones con seeders (crea toda la bd y algunos hoteles)
+php artisan migrate:fresh --seed
+```
+
 
 ### ✅ 4. Acceder a la aplicación
 
@@ -138,23 +145,13 @@ Cuando termine, abre tu navegador y visita:
 
 ---
 
-## ☁️ Despliegue en la nube (opcional)
-
-Puedes desplegar esto fácilmente en:
-
-* Frontend en **Vercel** o **Netlify**
-* Backend en **Render**, **Railway** o **Heroku**
-* DB PostgreSQL en **Supabase** o **ElephantSQL**
-
----
-
 ## 🧰 Comandos útiles
 
 ### Backend Laravel
 
 ```bash
 # Acceder al contenedor del backend
-docker exec -it backend-app bash
+docker exec -it managment-hotels-api-1 bash
 
 # Ejecutar migraciones con seeders (crea algunos hoteles)
 php artisan migrate:fresh --seed
@@ -166,8 +163,8 @@ psql -U postgres -d laravel < dump.sql
 ### Frontend React
 
 ```bash
-# Acceder al contenedor del frontend
-docker exec -it frontend-app sh
+# Acceder al contenedor del frontend(Aunque este como nos trae el build de producción no es necesario)
+docker exec -it managment-hotels-gui-1 sh
 npm run build
 ```
 
