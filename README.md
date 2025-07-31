@@ -35,6 +35,19 @@ Literalmente cualquier persona que tenga:
 
 ---
 
+## 🌍 Proyecto desplegado (en vivo)
+
+Puedes ver el sistema funcionando en producción en el siguiente enlace:
+
+🔗 **[https://management-hotels.ganantech.com/](https://management-hotels.ganantech.com/)**
+
+* Panel web (React): `https://management-hotels.ganantech.com/`
+* API REST: `https://management-hotels.ganantech.com/api/`
+
+Este entorno fue desplegado en un VPS con Ubuntu, usando Docker, Nginx con proxy inverso y un SSL con certbot.
+
+---
+
 ## 🚀 PASO A PASO PARA LEVANTAR EL PROYECTO
 
 ---
@@ -189,9 +202,10 @@ Si tienes dudas técnicas, puedes contactarme directamente.
 
 ## ✨ Autor
 
-**Jhorman (JH)**
+**Jhorman Gañan**
 Desarrollador Full Stack (Laravel + React)
 Colombia 🇨🇴
 [GitHub](https://github.com/Jhormanarias)
 
 ---
+
