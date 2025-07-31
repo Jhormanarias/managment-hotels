@@ -55,6 +55,36 @@ git clone https://github.com/Jhormanarias/managment-hotels.git
 cd managment-hotels
 ```
 
+### 📁 2.1. Copiar archivos `.env` necesarios
+
+Para que cada parte del sistema sepa cómo comportarse, necesitas copiar los archivos `.env.example` como `.env`.
+
+Ejecuta estos comandos desde la raíz del proyecto:
+
+```bash
+cp api/.env.example api/.env # el del backend
+cp gui/.env.example gui/.env # el del frontend
+cp .env.example .env  # El de la bd
+```
+
+Luego, cuando arranque Laravel por primera vez, deberás generar la clave secreta (lo explicamos más abajo 👇).
+
+---
+
+### 🛠️ 2.2 (Solo para Laravel) Generar la clave de la aplicación
+
+Una vez montado el contenedor de Laravel por primera vez, entra a él:
+
+```bash
+docker exec -it backend-app bash
+```
+
+Y dentro del contenedor ejecuta:
+
+```bash
+php artisan key:generate
+```
+
 ---
 
 ### 🛠️ 3. Levantar todo con Docker
